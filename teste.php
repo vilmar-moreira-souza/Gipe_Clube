@@ -1,30 +1,13 @@
 <?php
-     //Arquivo de conexao do PHP com MySQL
-     //Declaracao das variaveis locais
+$host="localhost";
+$user="root"; $pass="";
+ $banco="cadastro"; $conexao=mysqli_connect($host, $user, $pass) or die(mysqli_error()); mysqli_select_db($conexao,$banco) or die(mysqli_error()); ?>
 
-     $tabela_admin = "admin";
-     $tabela_logins = "login";
-     $tabela_produto = "produto";
-     $tabela_clientes = "usuario";
-     $tabela_produto = "produto";
-     $tabela_categoria = "categoria";
-
-     //Realizando a conexao com o MySQL
-     $resultado_conexao = mysqli_connect("localhost", "root", "");
-
-     //Verificando se a conexao foi realizada com sucesso
-     if($resultado_conexao)
-     {
-          //Erro na conexão MySQL
-
-          print('Erro!!! Conexão não realizada!!!');
-          
-
-     }
-     else
-     {
-          //Conexão com MySQL realizada com sucesso
-          //Selecionando banco de dados
-          mysqli_select_db($databasename,$resultado_conexao);
-     }
-?>
+ <?php
+  $nome=$_POST['nome'];
+$sobrenome = $_POST['sobrenome']; $pais=$_POST['pais']; $estado=$_POST['estado']; $cidade=$_POST['cidade']; $email=$_POST['email']; $senha=$_POST['senha']; $sql=mysqli_query($conexao,"INSERT INTO usuarios(nome, sobrenome, pais, estado, cidade, email, senha)
+VALUES ('$nome', '$sobrenome', '$pais', '$estado', '$cidade', '$email', '$senha')");
+echo "<center><h1>Cadastro realizado com sucesso</h1></center>"; mysqli_close($conexao);
+ ?>
+</body>
+</html>﻿

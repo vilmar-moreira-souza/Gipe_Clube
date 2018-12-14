@@ -12,8 +12,8 @@ $host ="localhost";
 $user = "root";
 $pass = "";//defini essa senha
 $banco ="cadastro";
-$conexao = mysqli_connect($host,$user,$pass) or die(mysql_error());
-mysqli_select_db($banco,$conexão) or die(mysql_error());
+$conexao = mysqli_connect($host,$user,$pass) or die(mysqli_error());
+mysqli_select_db($conexao,$banco) or die(mysqli_error());
 
  ?>
 
@@ -24,9 +24,10 @@ mysqli_select_db($banco,$conexão) or die(mysql_error());
   $mensagem = $_POST["mensagem"];
 
 if(($_POST['email'] != "") and ($_POST['mensagem'] != "")and ($_POST['nome'] != "")){   // se formulario preenchido -nao vazio
-   echo("capturado");
+       $sql = mysqli_query($conexao,"INSERT INTO usuarios(nome,email,mensagem)VALUES('$nome,$email,$mensagem')");
+       mysqli_close($conexao);
+       echo("capturado");
        require("index.html");
-       $sql = mysql_query("INSERT INTO usuarios(nome,email,mensagem)VALUES('$nome,$email,$mensagem')");
      }
 else{
       echo(" nao capturado");
