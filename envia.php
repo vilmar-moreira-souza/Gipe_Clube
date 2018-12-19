@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- http://localhost/phpmyadmin/sql.php  ACESSO AO phpmyadmin-->
 <html lang="pt-br" >
   <head>
     <meta charset="utf-8">
@@ -9,8 +10,8 @@
 
 <?php
 $host ="localhost";
-$user = "root";
-$pass = "";//defini essa senha
+$user = "root";// NOME PADRAO DO XAMPP
+$pass = "";//XAMPP NAO USA SENHA
 $banco ="cadastro";
 $conexao = mysqli_connect($host,$user,$pass) or die(mysqli_error());
 mysqli_select_db($conexao,$banco) or die(mysqli_error());
